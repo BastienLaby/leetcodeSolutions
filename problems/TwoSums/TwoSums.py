@@ -2,9 +2,9 @@ class Solution(object):
     def twoSum(self, nums, target):
 
         numsMap = {}
-        
+
         for i, num in enumerate(nums):
-            
+
             complement = target - num
             if complement in numsMap:
                 return [i, numsMap[complement]]
