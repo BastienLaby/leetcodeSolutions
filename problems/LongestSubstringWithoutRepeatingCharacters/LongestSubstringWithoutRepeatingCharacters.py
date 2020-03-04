@@ -24,6 +24,8 @@ class Solution1:
                 maximum = max(current, maximum)
 
         return maximum
+
+
 class Solution2:
     """
     User sliding window instead of encountered characters list.
