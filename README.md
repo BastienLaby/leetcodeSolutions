@@ -4,6 +4,6 @@ Solutions to [leetcode](https://leetcode.com/) problems, mocks and contests usin
 
 ## /problems
 
-To get the problem description, visit https://leetcode.com/problems/**filename**
+To get the problem description, visit https://leetcode.com/problems/<filename>
 
 **Exemple:** : [https://leetcode.com/problems/palindrome-number](https://leetcode.com/problems/palindrome-number)
