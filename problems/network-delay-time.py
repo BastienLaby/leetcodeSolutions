@@ -13,7 +13,7 @@ class Solution:
         Then, iterate over every node and update the node P parameter if the parent P + distance to parent is less than the current P (or current P note defined).
         At the end of each iteration, if the graph state didn't change, stop the loop.
 
-        Time complexity : ?
+        Time complexity : ? (huge)
         Space complexity : O(N) where N is the number of node.
         """
 
@@ -39,3 +39,42 @@ class Solution:
             return -1
         return max([i.p for i in nodes.values()])
 
+    def networkDelayTime_dijkstra(self, times, N: int, K: int) -> int:
+        """
+        Resolve problem using Dijkstra algorithm.
+        """
+
+        graph = {
+            n: [] for n in range(1, N + 1)
+        }  # collections.defaultdict must be usefull to avoid too much space memory directly at the beginig of the script.
+        for src, dst, t in times:
+            graph[src].append((dst, t))
+
+        distances = {n: float("inf") for n in range(1, N + 1)}
+        distances[K] = 0  # starting point
+
+        visited = [False] * (N + 1)
+
+        while True:
+
+            # find the nearest node
+
+            minDist = float("inf")
+            minNode = None  # index of the nearest node in the non visited nodes
+            for i in range(1, N + 1):
+                if not visited[i] and distances[i] < minDist:
+                    minDist = distances[i]
+                    minNode = i
+
+            if minNode is None:
+                break
+
+            visited[minNode] = True
+
+            # update the neighbors distance
+            for dst, t in graph[minNode]:
+                distances[dst] = min(distances[dst], distances[minNode] + t)
+
+        # When the graph is all visited, we can fin the biggest value in distances dict
+        maxDist = max(distances.values())
+        return maxDist if maxDist < float("inf") else -1
